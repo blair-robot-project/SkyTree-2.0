@@ -1,8 +1,8 @@
 package com.team449.frc2014.commands;
 
-import com.team449.frc2014.Constants;
 import com.team449.frc2014.ControlBoard;
 import com.team449.frc2014.OI;
+import com.team449.frc2014.RobotMap;
 import com.team449.frc2014.subsystems.Catcher;
 import com.team449.frc2014.subsystems.Drive;
 import com.team449.frc2014.subsystems.Flinger;
@@ -27,9 +27,8 @@ public abstract class CommandBase extends Command {
     public static Flinger flinger = new Flinger();
     public static Catcher catcher = new Catcher();
     public static ControlBoard controlBoard; // Just driver station
-    public static Compressor comp = new Compressor(Constants.compDigMod.getInt(),
-            Constants.compDIO.getInt(), Constants.compDigMod.getInt(), 
-            Constants.compRelay.getInt());
+    public static Compressor comp = new Compressor(RobotMap.compDigMod,
+            RobotMap.compDIO, RobotMap.compDigMod, RobotMap.compRelay);
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

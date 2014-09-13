@@ -1,6 +1,6 @@
 package com.team449.frc2014.subsystems;
 
-import com.team449.frc2014.Constants;
+import com.team449.frc2014.RobotMap;
 import com.team449.lib.util.CANPanther;
 import com.team449.lib.util.Util;
 import edu.wpi.first.wpilibj.CounterBase;
@@ -23,27 +23,27 @@ public class Drive extends Subsystem {
     private CANPanther right_3;
     
     private Encoder left_encoder = new Encoder(
-            new DigitalOutput(Constants.enDIOMod.getInt(), Constants.enAChnl.getInt()),
-            new DigitalOutput(Constants.enDIOMod.getInt(), Constants.enBChnl.getInt()),
+            new DigitalOutput(RobotMap.enDIOMod, RobotMap.enAChnl),
+            new DigitalOutput(RobotMap.enDIOMod, RobotMap.enBChnl),
             false, CounterBase.EncodingType.k4X);
     
     public Drive(){
         // Panther Initialization
         try {
-            left_1 = new CANPanther(Constants.panthL1Num.getInt());
-            left_2 = new CANPanther(Constants.panthL2Num.getInt());
-            left_3 = new CANPanther(Constants.panthL3Num.getInt());
-            right_1 = new CANPanther(Constants.panthR1Num.getInt());
-            right_2 = new CANPanther(Constants.panthR2Num.getInt());
-            right_3 = new CANPanther(Constants.panthR3Num.getInt());
+            left_1 = new CANPanther(RobotMap.panthL1Num);
+            left_2 = new CANPanther(RobotMap.panthL2Num);
+            left_3 = new CANPanther(RobotMap.panthL3Num);
+            right_1 = new CANPanther(RobotMap.panthR1Num);
+            right_2 = new CANPanther(RobotMap.panthR2Num);
+            right_3 = new CANPanther(RobotMap.panthR3Num);
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
         
         // Encoder initial setting        
-        left_encoder.setDistancePerPulse(Constants.enDPP.getDouble());
-        left_encoder.setMinRate(Constants.enMinRt.getDouble());
-        left_encoder.setSamplesToAverage(Constants.enNumSamp.getInt());
+        left_encoder.setDistancePerPulse(RobotMap.enDPP);
+        left_encoder.setMinRate(RobotMap.enMinRt);
+        left_encoder.setSamplesToAverage(RobotMap.enNumSamp);
     }
     
     public double getLeftDist(){
@@ -89,7 +89,7 @@ public class Drive extends Subsystem {
         }
         
         left *= 12; right *= 12;
-        left *= Constants.leftGain.getDouble();
+        left *= RobotMap.leftGain;
         
         setLeft(-left);
         setRight(right);

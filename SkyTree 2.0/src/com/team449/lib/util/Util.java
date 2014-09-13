@@ -6,7 +6,7 @@
 
 package com.team449.lib.util;
 
-import com.team449.frc2014.Constants;
+import com.team449.frc2014.RobotMap;
 import java.util.Vector;
 
 /**
@@ -38,7 +38,7 @@ public final class Util {
     }
     
     public static double deadBand(double input){
-        return Math.abs(input) < Constants.joyDeadBand.getDouble() ? 0 : input;
+        return Math.abs(input) < RobotMap.joyDeadBand ? 0 : input;
     }
     
 }

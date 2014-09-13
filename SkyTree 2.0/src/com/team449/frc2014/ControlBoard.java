@@ -9,23 +9,23 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class ControlBoard {
     
-    private final Joystick j_1 = new Joystick(Constants.joystick1Port.getInt());
-    private final Joystick j_2 = new Joystick(Constants.joystick2Port.getInt());
-    private final Joystick j_3 = new Joystick(Constants.joystick3Port.getInt());
-    private final Joystick j_4 = new Joystick(Constants.joystick4Port.getInt());
+    private final Joystick j_1 = new Joystick(RobotMap.joystick1Port);
+    private final Joystick j_2 = new Joystick(RobotMap.joystick2Port);
+    private final Joystick j_3 = new Joystick(RobotMap.joystick3Port);
+    private final Joystick j_4 = new Joystick(RobotMap.joystick4Port);
     
     public double getDriveJoyX(){
         double joyX = j_2.getAxis(Joystick.AxisType.kX);
-        return Util.deadBand(joyX * Constants.jXGain.getDouble());
+        return Util.deadBand(joyX * RobotMap.jXGain);
     }
     
     public double getDriveJoyY(){
         double joyY = j_2.getAxis(Joystick.AxisType.kY);
-        return Util.deadBand(joyY * Constants.jYGain.getDouble());
+        return Util.deadBand(joyY * RobotMap.jYGain);
     }
     
     public boolean getFShoot(){
-        return j_4.getRawButton(Constants.fShootButton.getInt());
+        return j_4.getRawButton(RobotMap.fShootButton);
     }
     
     public double getShotPower(){
@@ -33,39 +33,39 @@ public class ControlBoard {
     }
     
     public boolean getSafety(){
-        return j_3.getRawButton(Constants.safetyButton.getInt());
+        return j_3.getRawButton(RobotMap.safetyButton);
     }
     
     public boolean getArmIn(){
-        return j_2.getRawButton(Constants.armInButton.getInt());
+        return j_2.getRawButton(RobotMap.armInButton);
     }
     
     public boolean getFullFore(){
-        return j_3.getRawButton(Constants.fullForeButton.getInt());
+        return j_3.getRawButton(RobotMap.fullForeButton);
     }
     
     public boolean getFullBack(){
-        return j_3.getRawButton(Constants.fullBackButton.getInt());
+        return j_3.getRawButton(RobotMap.fullBackButton);
     }
     
     public boolean getHalfFore(){
-        return j_3.getRawButton(Constants.halfForeButton.getInt());
+        return j_3.getRawButton(RobotMap.halfForeButton);
     }
     
     public boolean getDefault(){
-        return j_4.getRawButton(Constants.defaultButton.getInt());
+        return j_4.getRawButton(RobotMap.defaultButton);
     }
     
     public boolean getClosed(){
-        return j_4.getRawButton(Constants.closedButton.getInt());
+        return j_4.getRawButton(RobotMap.closedButton);
     }
     
     public boolean getCatch(){
-        return j_4.getRawButton(Constants.closedButton.getInt());
+        return j_4.getRawButton(RobotMap.closedButton);
     }
     
     public boolean getCShoot(){
-        return j_4.getRawButton(Constants.cShootButton.getInt()) ||
+        return j_4.getRawButton(RobotMap.cShootButton) ||
                 getFShoot() || getSafety();
     }
     

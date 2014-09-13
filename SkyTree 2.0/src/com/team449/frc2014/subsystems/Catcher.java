@@ -1,6 +1,6 @@
 package com.team449.frc2014.subsystems;
 
-import com.team449.frc2014.Constants;
+import com.team449.frc2014.RobotMap;
 import com.team449.frc2014.commands.CommandBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -14,14 +14,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Catcher extends Subsystem {
     
     // front panel
-    private DoubleSolenoid first = new DoubleSolenoid(Constants.solMod.getInt(),
-            Constants.firstFwdChnl.getInt(), Constants.firstRevChnl.getInt());
+    private DoubleSolenoid first = new DoubleSolenoid(RobotMap.solMod,
+            RobotMap.firstFwdChnl, RobotMap.firstRevChnl);
     // side panels
-    private Solenoid second = new Solenoid(Constants.solMod.getInt(),
-            Constants.secondChnl.getInt());
+    private Solenoid second = new Solenoid(RobotMap.solMod, RobotMap.secondChnl);
     // contract everything
-    private Solenoid third = new Solenoid(Constants.solMod.getInt(),
-            Constants.thirdChnl.getInt());
+    private Solenoid third = new Solenoid(RobotMap.solMod, RobotMap.thirdChnl);
     
     private String lastVal = "closed";
     private Timer t = new Timer();

@@ -1,6 +1,6 @@
 package com.team449.frc2014.subsystems;
 
-import com.team449.frc2014.Constants;
+import com.team449.frc2014.RobotMap;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Flinger extends Subsystem {
     
-    private Solenoid flingSol = new Solenoid(Constants.solMod.getInt(),
-            Constants.flingSolChnl.getInt());
+    private Solenoid flingSol = new Solenoid(RobotMap.solMod,
+            RobotMap.flingSolChnl);
     private boolean status;
     
     public Flinger(){

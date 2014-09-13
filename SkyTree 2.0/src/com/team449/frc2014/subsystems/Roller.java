@@ -1,8 +1,7 @@
 package com.team449.frc2014.subsystems;
 
-import com.team449.frc2014.Constants;
+import com.team449.frc2014.RobotMap;
 import com.team449.frc2014.commands.CommandBase;
-import com.team449.lib.util.ConstantsBase;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
@@ -16,8 +15,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Roller extends Subsystem {
     
     private CANJaguar arm_motor;
-    private DoubleSolenoid arm = new DoubleSolenoid(Constants.armSlndMod.getInt(),
-            Constants.armFwdChnl.getInt(), Constants.armRevChnl.getInt());
+    private DoubleSolenoid arm = new DoubleSolenoid(RobotMap.armSlndMod,
+            RobotMap.armFwdChnl, RobotMap.armRevChnl);
     
     private boolean lastVal = false;
     private boolean lastFlingShoot = false;
@@ -28,7 +27,7 @@ public class Roller extends Subsystem {
         
         // Arm motor initialization
         try {
-            arm_motor = new CANJaguar(Constants.armMtrNum.getInt(),
+            arm_motor = new CANJaguar(RobotMap.armMtrNum,
                     CANJaguar.ControlMode.kVoltage);
             arm_motor.configNeutralMode(CANJaguar.NeutralMode.kBrake);
         } catch (CANTimeoutException ex) {

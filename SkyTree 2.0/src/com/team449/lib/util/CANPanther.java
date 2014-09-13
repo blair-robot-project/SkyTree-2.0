@@ -1,6 +1,6 @@
 package com.team449.lib.util;
 
-import com.team449.frc2014.Constants;
+import com.team449.frc2014.RobotMap;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
@@ -20,7 +20,7 @@ public class CANPanther extends CANJaguar {
     public CANPanther(int deviceNumber) throws CANTimeoutException{
         super(deviceNumber, CANPanther.panthCtrlMode);
         this.enableControl();
-        this.setVoltageRampRate(Constants.panthRmpRt.getDouble());
+        this.setVoltageRampRate(RobotMap.panthRmpRt);
         this.configNeutralMode(panthNtrlMode);
     }
 
