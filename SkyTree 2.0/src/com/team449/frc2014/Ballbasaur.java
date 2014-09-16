@@ -76,7 +76,6 @@ public class Ballbasaur extends IterativeRobot {
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();
         }
-        CommandBase.catcher.adjust();
     }
     
     /**

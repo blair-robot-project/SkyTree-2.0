@@ -48,35 +48,6 @@ public class Catcher extends Subsystem {
     public void setThird(boolean set){
         third.set(set);
     }
-    
-    public void adjust(){
-        String value;
-        if (CommandBase.controlBoard.getDefault()) value = "default";
-        else if (CommandBase.controlBoard.getClosed()) value = "closed";
-        else if (CommandBase.controlBoard.getCatch()) value = "catch";
-        else if (CommandBase.controlBoard.getCShoot()) value = "shoot";
-        else value = lastVal;
-        
-        if (value.equals("default"))
-            // Depressurize everything!!
-            set(DoubleSolenoid.Value.kReverse, false, false);
-        else if (value.equals("closed"))
-            // Don't pressurize the first two solenoids, but close up
-            // everything using the other solenoid
-            set(DoubleSolenoid.Value.kReverse, false, true);
-        else if (value.equals("catch")){
-            // If last was not catch and this time is catch, then put out
-            // the sides for a while but then depressurize everything
-            if (!lastVal.equals("catch")) t.reset();
-            if (t.get() < 1000) set(DoubleSolenoid.Value.kReverse, true, false);
-            else set(DoubleSolenoid.Value.kReverse, false, false);
-        }
-        else if (value.equals("shoot"))
-            // Put the front panel forward, but don't pressurize anything else
-            set(DoubleSolenoid.Value.kForward, false, false);
-        
-        lastVal = value;
-    }
 
     public void initDefaultCommand() {
     }

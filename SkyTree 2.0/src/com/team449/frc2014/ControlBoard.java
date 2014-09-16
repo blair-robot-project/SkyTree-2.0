@@ -52,21 +52,4 @@ public class ControlBoard {
         return j_3.getRawButton(RobotMap.halfForeButton);
     }
     
-    public boolean getDefault(){
-        return j_4.getRawButton(RobotMap.defaultButton);
-    }
-    
-    public boolean getClosed(){
-        return j_4.getRawButton(RobotMap.closedButton);
-    }
-    
-    public boolean getCatch(){
-        return j_4.getRawButton(RobotMap.closedButton);
-    }
-    
-    public boolean getCShoot(){
-        return j_4.getRawButton(RobotMap.cShootButton) ||
-                getFShoot() || getSafety();
-    }
-    
 }
