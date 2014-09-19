@@ -34,3 +34,5 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+
+SkyTree 2.0/nbproject/private/private.xml
