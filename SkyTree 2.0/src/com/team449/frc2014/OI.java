@@ -5,6 +5,9 @@ import com.team449.frc2014.commands.CatchCommand;
 import com.team449.frc2014.commands.CloseCatcherCommand;
 import com.team449.frc2014.commands.DepressurizeCatcherCommand;
 import com.team449.frc2014.commands.OpenFrontPanelCommand;
+import com.team449.frc2014.commands.ShootCommand;
+import com.team449.frc2014.commands.TurnSafetyOnCommand;
+import com.team449.lib.util.Util;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -14,6 +17,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+    
+    public static boolean safety = false;
     
     private final Joystick j_1 = new Joystick(RobotMap.joystick1Port);
     private final Joystick j_2 = new Joystick(RobotMap.joystick2Port);
@@ -33,10 +38,23 @@ public class OI {
             j4_buttons[i] = new JoystickButton(j_4, i);
         }
         
+        j4_buttons[RobotMap.fShootButton].whenReleased(new ShootCommand(false));
+        j3_buttons[RobotMap.safetyButton].toggleWhenPressed(new TurnSafetyOnCommand());
+        
         j4_buttons[RobotMap.defaultButton].whenPressed(new DepressurizeCatcherCommand());
         j4_buttons[RobotMap.closedButton].whenPressed(new CloseCatcherCommand());
         j4_buttons[RobotMap.catchButton].whenPressed(new CatchCommand());
         j4_buttons[RobotMap.cShootButton].whenPressed(new OpenFrontPanelCommand());
+    }
+    
+    public double getDriveJoyX(){
+        double joyX = j_2.getAxis(Joystick.AxisType.kX);
+        return Util.deadBand(joyX * RobotMap.jXGain);
+    }
+    
+    public double getDriveJoyY(){
+        double joyY = j_2.getAxis(Joystick.AxisType.kY);
+        return Util.deadBand(joyY * RobotMap.jYGain);
     }
     
 }

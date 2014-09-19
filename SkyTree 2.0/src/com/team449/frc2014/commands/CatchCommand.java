@@ -6,6 +6,7 @@
 package com.team449.frc2014.commands;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  *
@@ -20,11 +21,7 @@ public class CatchCommand extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         catcher.set(DoubleSolenoid.Value.kReverse, true, false);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException ex) {
-            System.out.println("sleep interrupted");
-        }
+        Timer.delay(1.0);
         (new DepressurizeCatcherCommand()).start();
     }
 
@@ -34,7 +31,7 @@ public class CatchCommand extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

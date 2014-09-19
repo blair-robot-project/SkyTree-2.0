@@ -6,47 +6,33 @@
 package com.team449.frc2014.commands;
 
 import com.team449.frc2014.OI;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Timer;
 
 /**
  *
  * @author Eyob
  */
-public class ShootCommand extends CommandBase {
+public class TurnSafetyOnCommand extends CommandBase {
     
-    private final boolean autoExec;   // true if executed by autonomous
-    
-    public ShootCommand(boolean autoExec){
-        requires(roller);
-        requires(flinger);
-        this.autoExec = autoExec;
+    public TurnSafetyOnCommand() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        boolean cond = roller.getArm().get().equals(DoubleSolenoid.Value.kForward);
-        flinger.setStatus(cond);
-        
-        if ((OI.safety || autoExec) && cond){
-            flinger.setFlinger(true);
-            Timer.delay(1.0);
-            flinger.setFlinger(false);
-        }
+        OI.safety = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
     }
 
-    // Make this return true when this Command no longer needs to run execute()
+    // Run indefinitely until command is explicitly canceled
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        OI.safety = false;
     }
 
     // Called when another command which requires one or more of the same

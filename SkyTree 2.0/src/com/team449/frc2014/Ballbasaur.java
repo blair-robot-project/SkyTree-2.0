@@ -9,7 +9,6 @@ package com.team449.frc2014;
 
 
 import com.team449.frc2014.commands.CommandBase;
-import com.team449.frc2014.commands.ShootCommand;
 import com.team449.frc2014.commands.auto.AutonomousCommand;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -26,7 +25,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Ballbasaur extends IterativeRobot {
 
     AutonomousCommand autonomousCommand;
-    ShootCommand shootCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -59,8 +57,6 @@ public class Ballbasaur extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         autonomousCommand.cancel();
-        shootCommand = new ShootCommand();
-        shootCommand.start();
     }
 
     /**
@@ -70,8 +66,8 @@ public class Ballbasaur extends IterativeRobot {
         Scheduler.getInstance().run();
         try {
             CommandBase.drive.setMotors(
-                    CommandBase.controlBoard.getDriveJoyX(),
-                    CommandBase.controlBoard.getDriveJoyY());
+                    CommandBase.oi.getDriveJoyX(),
+                    CommandBase.oi.getDriveJoyY());
             CommandBase.roller.recalc(CommandBase.controlBoard.getFShoot());
         } catch (CANTimeoutException ex) {
             ex.printStackTrace();

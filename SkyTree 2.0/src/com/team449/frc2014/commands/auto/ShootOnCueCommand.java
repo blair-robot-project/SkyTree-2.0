@@ -2,7 +2,6 @@ package com.team449.frc2014.commands.auto;
 
 import com.team449.frc2014.commands.CommandBase;
 import com.team449.frc2014.commands.ShootCommand;
-import com.team449.frc2014.commands.auto.BigAutoCheckCommand;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -29,8 +28,7 @@ public class ShootOnCueCommand extends CommandBase {
         boolean gtg = BigAutoCheckCommand.goodToGo;
         boolean gtg2 = lastGTG && !gtg && timer.get() < 500;
         boolean shoot = lastGTG2 && !gtg2;
-        ShootCommand s = new ShootCommand(shoot, true);
-        s.cancel();     // hope this won't kill a running shot
+        if (shoot) (new ShootCommand(true)).start();
         lastGTG = gtg;
         lastGTG2 = gtg2;
     }

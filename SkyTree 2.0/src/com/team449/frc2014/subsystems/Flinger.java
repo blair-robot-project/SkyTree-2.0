@@ -23,7 +23,7 @@ public class Flinger extends Subsystem {
     }
     
     public void setFlinger(boolean on){
-            flingSol.set(on);
+        flingSol.set(on);
     }
 
     public void initDefaultCommand() {
