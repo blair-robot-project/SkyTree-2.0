@@ -1,7 +1,7 @@
 package com.team449.frc2014.commands.auto;
 
 import com.team449.frc2014.commands.ExtendRetractArmCommand;
-import com.team449.frc2014.commands.FrontPanelCommand;
+import com.team449.frc2014.commands.OpenFrontPanelCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -17,7 +17,7 @@ public class AutonomousCommand extends CommandGroup {
     public AutonomousCommand() {
         // May want to change to parallel -- Retract arm, extend front panel
         addSequential(new ExtendRetractArmCommand(false));
-        addSequential(new FrontPanelCommand(true)); 
+        addSequential(new OpenFrontPanelCommand()); 
         addParallel(autoCheck);
         addParallel(new AdjustPositionCommand());
         addParallel(new ShootOnCueCommand());
